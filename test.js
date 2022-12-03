@@ -22,3 +22,13 @@ var movies = {
 };
 
 console.log(Object.keys(movies));
+
+var cars = {
+  releaseDate: 2006,
+  duration: 117,
+  actors: ['Оуэн Уилсон', 'Бонни Хант', 'Пол Ньюман'],
+  format: 'Blu-ray',
+};
+movies['Тачки'] = cars;
+
+console.log(Object.keys(movies));
