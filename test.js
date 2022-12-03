@@ -17,7 +17,7 @@ var movies = {
     releaseDate: 2005,
     duration: 157,
     actors: ['Дэниел Рэдклифф', 'Эмма Уотсон', 'Руперт Гринт'],
-    format: 'Blu-ray',
+    format: 'Blu-ra',
   },
 };
 
