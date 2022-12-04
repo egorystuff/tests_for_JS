@@ -35,3 +35,11 @@ for (let i = 0; i < animals.length; i++) {
   animals[i] = animals[i] + ' -прекрасное животное';
 }
 console.log(animals);
+
+var alphabet = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя';
+var randomString = '';
+while (randomString.length <= 25) {
+  var letter = Math.floor(Math.random() * alphabet.length);
+  randomString += alphabet[letter];
+}
+console.log(randomString);
