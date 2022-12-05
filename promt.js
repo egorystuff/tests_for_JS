@@ -10,5 +10,23 @@
 
 // alert('JS это очень здорово!');
 
-var words = ['программа', 'макака', 'прекрасный', 'оладушек'];
-var word = words[Math.floor(Math.random() * words.length)];
+let words = ['программа', 'макака', 'прекрасный', 'оладушек'];
+let word = words[Math.floor(Math.random() * words.length)];
+let answerArray = [];
+for (let i = 0; i < word.length; i++) {
+  answerArray[i] = '_';
+}
+let remainingLetters = word.length;
+alert(answerArray.join(' '));
+let guess = prompt('Угадайте букву или нажмите отмена для выхода из игры.');
+while (remainingLetters > 0) {
+  if (guess === null) {
+    break;
+  } else if (guess.length !== 1) {
+    alert('Пожалуйста, введите только одну букву');
+  } else {
+    // Обновляем состояние игры
+  }
+}
+
+console.log(answerArray);
