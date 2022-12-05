@@ -11,22 +11,40 @@
 // alert('JS это очень здорово!');
 
 let words = ['программа', 'макака', 'прекрасный', 'оладушек'];
+
+// выбираем случайное слово
 let word = words[Math.floor(Math.random() * words.length)];
+
+// создаем итоговый массив
 let answerArray = [];
 for (let i = 0; i < word.length; i++) {
   answerArray[i] = '_';
 }
+
 let remainingLetters = word.length;
-alert(answerArray.join(' '));
-let guess = prompt('Угадайте букву или нажмите отмена для выхода из игры.');
+
+// игровой цикл
 while (remainingLetters > 0) {
+  // показываем состояние игры
+  alert(answerArray.join(' '));
+  // запрашиваем варианты ответа
+  let guess = prompt('Угадайте букву или нажмите Отмена для выхода из игры.');
   if (guess === null) {
+    // выходим из игрового цикла
     break;
   } else if (guess.length !== 1) {
     alert('Пожалуйста, введите только одну букву');
   } else {
     // Обновляем состояние игры
+    for (let j = 0; j < word.length; j++) {
+      if (word[j] === guess) {
+        answerArray[j] = guess;
+        remainingLetters--;
+      }
+    }
   }
+  // конец игрового цикла
 }
-
-console.log(answerArray);
+alert(answerArray.join(' '));
+alert('Отлично! Было загадано слово "' + word + '"');
+// console.log(answerArray);
