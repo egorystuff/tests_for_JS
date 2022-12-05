@@ -10,7 +10,15 @@
 
 // alert('JS это очень здорово!');
 
-let words = ['программа', 'макака', 'прекрасный', 'оладушек'];
+let words = [
+  'программа',
+  'макака',
+  'прекрасный',
+  'оладушек',
+  'балалайка',
+  'изюм',
+  'анисковка',
+];
 
 // выбираем случайное слово
 let word = words[Math.floor(Math.random() * words.length)];
@@ -27,8 +35,13 @@ let remainingLetters = word.length;
 while (remainingLetters > 0) {
   // показываем состояние игры
   alert(answerArray.join(' '));
+
   // запрашиваем варианты ответа
-  let guess = prompt('Угадайте букву или нажмите Отмена для выхода из игры.');
+  var guess = prompt('Угадайте букву или нажмите Отмена для выхода из игры.');
+
+  // Преобразуем заглавные буквы в строчные
+  guess = guess.toLowerCase();
+
   if (guess === null) {
     // выходим из игрового цикла
     break;
@@ -45,6 +58,7 @@ while (remainingLetters > 0) {
   }
   // конец игрового цикла
 }
+
 alert(answerArray.join(' '));
 alert('Отлично! Было загадано слово "' + word + '"');
 // console.log(answerArray);
