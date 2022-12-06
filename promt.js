@@ -58,7 +58,10 @@ while (remainingLetters > 0 && attemt > 0) {
       // Обновляем состояние игры
       guess = guess.toLowerCase();
       for (let j = 0; j < word.length; j++) {
-        if (word[j] === guess) {
+        if (answerArray[j] === guess) {
+          alert('Буква уже отгадана. Попробуйте другую букву');
+          break;
+        } else if (word[j] === guess) {
           answerArray[j] = guess;
           remainingLetters--;
         }
@@ -71,7 +74,7 @@ while (remainingLetters > 0 && attemt > 0) {
 
 if (remainingLetters === 0) {
   alert(answerArray.join(' '));
-  alert('Отлично! Было загадано слово "' + word + '"');
+  alert('Отлично! Было загадано слово "' + word + '"  МОИ ПОЗДРАВЛЕНИЯ!!!');
 } else {
   alert('Слово не отгадано, вы проиграли!!! ХАХАХАХАХА');
 }
