@@ -11,12 +11,12 @@
 // alert('JS это очень здорово!');
 
 let words = [
+  'изюм',
   'программа',
   'макака',
   'прекрасный',
   'оладушек',
   'балалайка',
-  'изюм',
   'анисковка',
 ];
 
@@ -30,35 +30,49 @@ for (let i = 0; i < word.length; i++) {
 }
 
 let remainingLetters = word.length;
+let attemt = word.length + 3;
 
 // игровой цикл
-while (remainingLetters > 0) {
+while (remainingLetters > 0 && attemt > 0) {
   // показываем состояние игры
   alert(answerArray.join(' '));
+  attemt--;
+  alert('У вас осталось ' + attemt + ' попыток');
 
-  // запрашиваем варианты ответа
-  var guess = prompt('Угадайте букву или нажмите Отмена для выхода из игры.');
-
-  // Преобразуем заглавные буквы в строчные
-  guess = guess.toLowerCase();
-
-  if (guess === null) {
-    // выходим из игрового цикла
+  if (attemt === 0) {
+    alert('Попытки закончились. Конец игры!');
     break;
-  } else if (guess.length !== 1) {
-    alert('Пожалуйста, введите только одну букву');
   } else {
-    // Обновляем состояние игры
-    for (let j = 0; j < word.length; j++) {
-      if (word[j] === guess) {
-        answerArray[j] = guess;
-        remainingLetters--;
+    // запрашиваем варианты ответа
+    var guess = prompt('Угадайте букву или нажмите Отмена для выхода из игры.');
+
+    // Преобразуем заглавные буквы в строчные
+    guess = guess.toLowerCase();
+
+    if (guess === null) {
+      // выходим из игрового цикла
+      break;
+    } else if (guess.length !== 1) {
+      alert('Пожалуйста, введите только одну букву');
+    } else {
+      // Обновляем состояние игры
+      for (let j = 0; j < word.length; j++) {
+        if (word[j] === guess) {
+          answerArray[j] = guess;
+          remainingLetters--;
+        }
       }
     }
   }
+
   // конец игрового цикла
 }
 
-alert(answerArray.join(' '));
-alert('Отлично! Было загадано слово "' + word + '"');
+if (remainingLetters === 0) {
+  alert(answerArray.join(' '));
+  alert('Отлично! Было загадано слово "' + word + '"');
+} else {
+  alert('Слово не отгадано, вы проиграли!!! ХАХАХАХАХА');
+}
+
 // console.log(answerArray);
