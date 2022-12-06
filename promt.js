@@ -47,15 +47,16 @@ while (remainingLetters > 0 && attemt > 0) {
     var guess = prompt('Угадайте букву или нажмите Отмена для выхода из игры.');
 
     // Преобразуем заглавные буквы в строчные
-    guess = guess.toLowerCase();
 
     if (guess === null) {
       // выходим из игрового цикла
       break;
     } else if (guess.length !== 1) {
+      guess = guess.toLowerCase();
       alert('Пожалуйста, введите только одну букву');
     } else {
       // Обновляем состояние игры
+      guess = guess.toLowerCase();
       for (let j = 0; j < word.length; j++) {
         if (word[j] === guess) {
           answerArray[j] = guess;
