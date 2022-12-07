@@ -10,8 +10,8 @@ console.log(pickRandomWord(['Чарли', 'Радж', 'Николь', 'Кейт'
 
 //генератор случайных дразнилок
 
-var generateRandomInsult = function (howManyTimes) {
-  for (var i = 0; i < howManyTimes; i++) {
+var generateRandomInsult = function (number) {
+  for (var i = 0; i < number; i++) {
     var randomBodyParts = ['глаз', 'нос', 'череп'];
     var randomAdjectives = ['вонючая', 'унылая', 'дурацкая'];
     var randomWords = ['муха', 'выдра', 'дубина', 'мартышка', 'крыса'];
@@ -24,8 +24,20 @@ var generateRandomInsult = function (howManyTimes) {
       ' ' +
       pickRandomWord(randomWords) +
       ' !!!';
-    return randomString;
+    // return randomString;
+    console.log(randomString);
   }
 };
 
-console.log(generateRandomInsult(5));
+console.log(generateRandomInsult(3));
+
+//выводит пятую букву вашего имени
+var fifthLetter = function (name) {
+  if (name.length < 5) {
+    return;
+  }
+  return 'Пятая буква вашего мени: ' + name[4] + '.';
+};
+
+console.log(fifthLetter('Николай'));
+console.log(fifthLetter('Ник'));
