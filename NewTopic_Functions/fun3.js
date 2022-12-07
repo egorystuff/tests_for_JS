@@ -11,8 +11,14 @@ console.log(result);
 
 //упражнение 2
 var areArraysSame = function (array1, array2) {
-  while (array1 !== array2) {
+  if (array1.lenght != array2.lenght) {
     return false;
+  } else {
+    for (let i = 0; i < array1.length; i++) {
+      array1[i] === array2[i];
+    }
+    return true;
   }
-  for (let i = 0; i < array1.length; i++) {}
 };
+
+console.log(areArraysSame([1, 2, 3], [1, 2, 3, 4]));
