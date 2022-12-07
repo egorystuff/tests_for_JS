@@ -21,6 +21,9 @@ var printMultipleTimes = function (howManyTimes, whatToDraw) {
     console.log(i + ' ' + whatToDraw);
   }
 };
+
+console.log(printMultipleTimes(2, 'хахах'));
+
 //функция возвращает значение
 var double = function (number) {
   return number * 2;
