@@ -21,5 +21,9 @@ var printMultipleTimes = function (howManyTimes, whatToDraw) {
     console.log(i + ' ' + whatToDraw);
   }
 };
+//функция возвращает значение
+var double = function (number) {
+  return number * 2;
+};
 
-console.log(printMultipleTimes(4, '=^.^='));
+console.log(double(5) + double(6));
