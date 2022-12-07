@@ -25,8 +25,14 @@ var printMultipleTimes = function (howManyTimes, whatToDraw) {
 console.log(printMultipleTimes(2, 'хахах'));
 
 //функция возвращает значение
+//длинная запись
 var double = function (number) {
   return number * 2;
 };
+
+//пример короткой записи
+function double2(number) {
+  return number * 10;
+}
 
 console.log(double(5) + double(6));
