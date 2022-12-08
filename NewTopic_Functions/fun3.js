@@ -10,17 +10,18 @@ var result = multiply(36325, 9824) + add(777, 0);
 console.log(result);
 
 //упражнение 2
+('use strict');
 var areArraysSame = function (arr1, arr2) {
-  if (arr1.lenght !== arr2.lenght) {
+  if (arr1.length !== arr2.length) {
     return false;
   }
 
-  for (var i = 0; i < arr1.length; i++) {
-    if (arr1[i] !== arr2[i]) {
+  for (var j = 0; j < arr1.length; j++) {
+    if (arr1[j] !== arr2[j]) {
       return false;
     }
   }
   return true;
 };
 
-console.log(areArraysSame([1, 2, 3], [1, 2, 3, 4, 5]));
+console.log(areArraysSame([1, 2, 3], [1, 2, 3]));
