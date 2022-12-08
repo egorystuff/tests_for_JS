@@ -30,11 +30,10 @@ var showPlayerProgress = function (answerArray) {
 
 var getGuess = function () {
   // Запрашивает ответ игрока с помощью prompt
-  if (attemt === 0) {
-    alert('Попытки закончились. Конец игры!');
-    return false;
-  } else {
+  if (attemt > 0) {
     return prompt('Введите букву, или нажмите Отмена для выхода из игры.');
+  } else {
+    return alert('Попытки закончились. Конец игры!');
   }
 };
 
@@ -78,13 +77,13 @@ while (remainingLetters > 0 && attemt > 0) {
   alert('У вас осталось ' + attemt + ' попыток');
   // guess: ответ игрока
   var guess = getGuess();
-  if (guess === null) {
+
+  if (attemt === 0) {
     break;
-  } else if (guess.length !== 1) {
+  } else if (guess.length > 1) {
+    guess = guess.toLowerCase();
     alert('Пожалуйста, введите одиночную букву.');
   } else {
-    // Преобразуем заглавные буквы в строчные
-    guess = guess.toLowerCase();
     for (let j = 0; j < word.length; j++) {
       if (answerArray[j] === guess) {
         alert('Буква уже отгадана. Попробуйте другую букву');
