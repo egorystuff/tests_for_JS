@@ -1,37 +1,43 @@
-let words = [
-  'изюм',
-  'программа',
-  'макака',
-  'прекрасный',
-  'оладушек',
-  'балалайка',
-  'анисковка',
-];
-
-// Основные функции
-
-var pickWord = function (words) {
-  return words[Math.floor(Math.random() * words.length)];
+var pickWord = function () {
   // Возвращает случайно выбранное слово
+  var words = [
+    'изюм',
+    // 'программа',
+    // 'макака',
+    // 'прекрасный',
+    // 'оладушек',
+    // 'балалайка',
+    // 'анисковка',
+  ];
+
+  return words[Math.floor(Math.random() * words.length)];
 };
 
 var setupAnswerArray = function (word) {
-  let answerArray = [];
-  for (let i = 0; i < word.length; i++) {
+  // Возвращает итоговый массив для заданного слова word
+  var answerArray = [];
+  for (var i = 0; i < word.length; i++) {
     answerArray[i] = '_';
   }
-  // Возвращает итоговый массив для заданного слова word
+
+  return answerArray;
 };
 
 var showPlayerProgress = function (answerArray) {
+  // С помощью alert отображает текущее состояние игры
   alert(answerArray.join(' '));
   attemt--;
   alert('У вас осталось ' + attemt + ' попыток');
-  // С помощью alert отображает текущее состояние игры
 };
 
 var getGuess = function () {
   // Запрашивает ответ игрока с помощью prompt
+  if (attemt === 0) {
+    alert('Попытки закончились. Конец игры!');
+    return false;
+  } else {
+    return prompt('Угадайте букву, или нажмите Отмена для выхода из игры.');
+  }
 };
 
 var updateGameState = function (guess, word, answerArray) {
@@ -39,17 +45,22 @@ var updateGameState = function (guess, word, answerArray) {
   // возвращает число, обозначающее, сколько раз буква guess
   // встречается в слове, чтобы можно было обновить значение
   // remainingLetters
+  var appearances = 0;
+  for (var j = 0; j < word.length; j++) {
+    if (word[j] === guess) {
+      answerArray[j] = guess;
+      appearances++;
+    }
+  }
+
+  return appearances;
 };
 
 var showAnswerAndCongratulatePlayer = function (answerArray) {
-  if (remainingLetters === 0) {
-    alert(answerArray.join(' '));
-    alert('Отлично! Было загадано слово "' + word + '"  МОИ ПОЗДРАВЛЕНИЯ!!!');
-  } else {
-    alert('Слово не отгадано, вы проиграли!!! ХАХАХАХАХА');
-  }
   // С помощью alert показывает игроку отгаданное слово
   // и поздравляет его с победой
+  showPlayerProgress(answerArray);
+  alert('Отлично! Было загадано слово ' + answerArray.join(''));
 };
 
 // word: загаданное слово
@@ -59,6 +70,7 @@ var answerArray = setupAnswerArray(word);
 // remainingLetters: сколько букв осталось угадать
 var remainingLetters = word.length;
 let attemt = word.length + 3;
+
 while (remainingLetters > 0 && attemt > 0) {
   showPlayerProgress(answerArray);
   // guess: ответ игрока
@@ -73,4 +85,5 @@ while (remainingLetters > 0 && attemt > 0) {
     remainingLetters -= correctGuesses;
   }
 }
+
 showAnswerAndCongratulatePlayer(answerArray);
