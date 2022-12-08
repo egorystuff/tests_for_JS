@@ -26,8 +26,6 @@ var setupAnswerArray = function (word) {
 var showPlayerProgress = function (answerArray) {
   // С помощью alert отображает текущее состояние игры
   alert(answerArray.join(' '));
-  attemt--;
-  alert('У вас осталось ' + attemt + ' попыток');
 };
 
 var getGuess = function () {
@@ -36,7 +34,7 @@ var getGuess = function () {
     alert('Попытки закончились. Конец игры!');
     return false;
   } else {
-    return prompt('Угадайте букву, или нажмите Отмена для выхода из игры.');
+    return prompt('Введите букву, или нажмите Отмена для выхода из игры.');
   }
 };
 
@@ -52,15 +50,18 @@ var updateGameState = function (guess, word, answerArray) {
       appearances++;
     }
   }
-
   return appearances;
 };
 
 var showAnswerAndCongratulatePlayer = function (answerArray) {
   // С помощью alert показывает игроку отгаданное слово
   // и поздравляет его с победой
-  showPlayerProgress(answerArray);
-  alert('Отлично! Было загадано слово ' + answerArray.join(''));
+  if (remainingLetters === 0) {
+    alert(answerArray.join(' '));
+    alert('Отлично! Было загадано слово "' + word + '"  МОИ ПОЗДРАВЛЕНИЯ!!!');
+  } else {
+    alert('Слово не отгадано, вы проиграли!!! ХАХАХАХАХА');
+  }
 };
 
 // word: загаданное слово
@@ -73,6 +74,8 @@ let attemt = word.length + 3;
 
 while (remainingLetters > 0 && attemt > 0) {
   showPlayerProgress(answerArray);
+  attemt--;
+  alert('У вас осталось ' + attemt + ' попыток');
   // guess: ответ игрока
   var guess = getGuess();
   if (guess === null) {
@@ -80,9 +83,20 @@ while (remainingLetters > 0 && attemt > 0) {
   } else if (guess.length !== 1) {
     alert('Пожалуйста, введите одиночную букву.');
   } else {
+    // Преобразуем заглавные буквы в строчные
+    guess = guess.toLowerCase();
+    for (let j = 0; j < word.length; j++) {
+      if (answerArray[j] === guess) {
+        alert('Буква уже отгадана. Попробуйте другую букву');
+        break;
+      } else if (word[j] === guess) {
+        answerArray[j] = guess;
+        remainingLetters--;
+      }
+    }
     // correctGuesses: количество открытых букв
-    var correctGuesses = updateGameState(guess, word, answerArray);
-    remainingLetters -= correctGuesses;
+    // var correctGuesses = updateGameState(guess, word, answerArray);
+    // remainingLetters -= correctGuesses;
   }
 }
 
